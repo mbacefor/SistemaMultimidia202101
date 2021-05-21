@@ -1,4 +1,4 @@
-# Node.js TypeScript Template
+# Algoritmos de Compressão de Dados
 
 [![Package Version][package-image]][package-url]
 [![Open Issues][issues-image]][issues-url]
