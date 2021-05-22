@@ -13,13 +13,6 @@ export class AlgoritmosCompressao {
 		this._logger = Logger.getLogger({ name: this.constructor.name });
 	}
 
-	/* Public Instance Methods */
-
-	public exampleMethod(param: string): string {
-		this._logger.debug('Received: ' + param);
-		return param;
-	}
-
 	/**
 	 * Converter um numero em string de bits (Um byte)
 	 * @param dec
@@ -43,8 +36,12 @@ export class AlgoritmosCompressao {
 		return bytes.join('').toString();
 	}
 
-	/* Public Instance Methods */
-
+	/**
+	 * Método que comprime uma sequencia de string usando o algoritmo de
+	 * frequencia de caracteres
+	 * @param param
+	 * @returns
+	 */
 	public comprimeFequenciaCaractere(param: string): string {
 		this._logger.debug('Entrada: ' + param);
 		this._logger.debug('Entrada(B): ' + this.string2bin(param));
@@ -65,8 +62,12 @@ export class AlgoritmosCompressao {
 		return textoComprimido;
 	}
 
-	/* Public Instance Methods */
-
+/**
+ * Metodo que descomprime uma sequencia de caracteres usando o algoritmo de
+ * frequencia de caracteres
+ * @param param
+ * @returns
+ */
 	public descomprimeFequenciaCaractere(param: string): string {
 		this._logger.debug('Received: ' + param);
 		let i = 0;
