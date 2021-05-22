@@ -8,12 +8,7 @@ describe('AlgoritmosCompressao class', () => {
 		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
 		expect(example, 'example should exit').to.exist; // tslint:disable-line:no-unused-expression
 	});
-	// it('should return whatever is passed to exampleMethod()', () => {
-	// 	const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-	// 	const param: string = 'This is my param.';
-	// 	const returnValue: string = example.exampleMethod(param);
-	// 	expect(returnValue).to.equal(param, 'returns the value passed as a parameter');
-	// });
+
 	it('Testa o metodo comprimeFequenciaCaractere com o texto AAAAAHHHFGGGGBBPEEECCCCCCDLLLLRR', () => {
 		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
 		const param: string = 'AAAAAHHHFGGGGBBPEEECCCCCCDLLLLRR';
@@ -66,12 +61,20 @@ describe('AlgoritmosCompressao class', () => {
 		expect(returnValue).to.equal('ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', 'returns the value passed as a parameter');
 	});
 
-	it('Testa o metodo descomprimeFequenciaCaractere com o texto 1A100B', () => {
+	it('Testa o metodo dec2bin com o numero 10', () => {
 		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
 		const param: number = 10;
 		const returnValue: string = example.dec2bin(param);
 		expect(returnValue).to.equal('00001010', 'returns the value passed as a parameter');
 	});
+
+	it('Testa o metodo dec2bin com o numero -10', () => {
+		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
+		const param: number = -10;
+		const returnValue: string = example.dec2bin(param);
+		expect(returnValue).to.equal('00001001', 'returns the value passed as a parameter');
+	});
+
 	it('Testa o metodo descomprimeFequenciaCaractere com o texto 1A100B', () => {
 		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
 		const param: number = 0;
