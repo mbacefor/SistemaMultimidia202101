@@ -1,6 +1,7 @@
 'use strict';
 
 import { Logger } from 'sitka';
+import { Util } from './util';
 
 export class AlgoritmosCompressao {
 	/* Private Instance Fields */
@@ -14,29 +15,6 @@ export class AlgoritmosCompressao {
 	}
 
 	/**
-	 * Converter um numero em string de bits (Um byte)
-	 * @param dec
-	 */
-	public dec2bin(dec: number): string {
-
-		return dec >= 0 ? dec.toString(2).padStart(8, '0') : (~dec).toString(2).padStart(8, '0'); // eslint-disable-line no-bitwise
-
-	}
-
-	/**
-	 * Converter uma string em string de bits
-	 * @param dec
-	 */
-	public string2bin(str: string): string {
-		let bytes: string[] = []; // char codes
-		for (let p = 0; p < str.length; ++p) {
-			const code = str.charCodeAt(p);
-			bytes = bytes.concat([this.dec2bin(code)]);
-		}
-		return bytes.join('').toString();
-	}
-
-	/**
 	 * Método que comprime uma sequencia de string usando o algoritmo de
 	 * frequencia de caracteres
 	 * @param param
@@ -44,7 +22,7 @@ export class AlgoritmosCompressao {
 	 */
 	public comprimeFequenciaCaractere(param: string): string {
 		this._logger.debug('Entrada: ' + param);
-		this._logger.debug('Entrada(B): ' + this.string2bin(param));
+		this._logger.debug('Entrada(B): ' + Util.string2bin(param));
 
 		let i = 0;
 		let textoComprimido: string = '';
@@ -58,7 +36,7 @@ export class AlgoritmosCompressao {
 			textoComprimido += repeticoes + caracter;
 		}
 		this._logger.debug('Saida: ' + textoComprimido);
-		this._logger.debug('Saida (B): ' + this.string2bin(textoComprimido));
+		this._logger.debug('Saida (B): ' + Util.string2bin(textoComprimido));
 		return textoComprimido;
 	}
 

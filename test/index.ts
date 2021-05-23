@@ -1,7 +1,7 @@
 'use strict';
 
 import { expect } from 'chai';
-import { AlgoritmosCompressao } from '../dist/index';
+import { AlgoritmosCompressao } from '../src/index';
 
 describe('AlgoritmosCompressao class', () => {
 	it('should create an instance using its constructor', () => {
@@ -59,51 +59,6 @@ describe('AlgoritmosCompressao class', () => {
 		const param: string = '1A90B';
 		const returnValue: string = example.descomprimeFequenciaCaractere(param);
 		expect(returnValue).to.equal('ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', 'returns the value passed as a parameter');
-	});
-
-	it('Testa o metodo dec2bin com o numero 10', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: number = 10;
-		const returnValue: string = example.dec2bin(param);
-		expect(returnValue).to.equal('00001010', 'returns the value passed as a parameter');
-	});
-
-	it('Testa o metodo dec2bin com o numero -10', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: number = -10;
-		const returnValue: string = example.dec2bin(param);
-		expect(returnValue).to.equal('00001001', 'returns the value passed as a parameter');
-	});
-
-	it('Testa o metodo descomprimeFequenciaCaractere com o texto 1A100B', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: number = 0;
-		const returnValue: string = example.dec2bin(param);
-		expect(returnValue).to.equal('00000000', 'returns the value passed as a parameter');
-	});
-	it('Testa o metodo descomprimeFequenciaCaractere com o texto 1A100B', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: number = 256;
-		const returnValue: string = example.dec2bin(param);
-		expect(returnValue).to.equal('100000000', 'returns the value passed as a parameter');
-	});
-	it('Testa o metodo string2bin com o texto A', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: string = 'A';
-		const returnValue: string = example.string2bin(param);
-		expect(returnValue).to.equal('01000001', 'returns the value passed as a parameter');
-	});
-	it('Testa o metodo string2bin com o texto B', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: string = 'B';
-		const returnValue: string = example.string2bin(param);
-		expect(returnValue).to.equal('01000010', 'returns the value passed as a parameter');
-	});
-	it('Testa o metodo string2bin com o texto AB', () => {
-		const example: AlgoritmosCompressao = new AlgoritmosCompressao();
-		const param: string = 'AB';
-		const returnValue: string = example.string2bin(param);
-		expect(returnValue).to.equal('0100000101000010', 'returns the value passed as a parameter');
 	});
 
 });
