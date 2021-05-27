@@ -57,5 +57,9 @@ describe('Util class', () => {
 		const returnValue: number = Util.bin2dec(param);
 		expect(returnValue).to.equal(255, 'returns the value passed as a parameter');
 	});
-
+	it('Testa o metodo bin2dec com o texto 00000101', () => {
+		const param: string = '00000101';
+		const returnValue: number = Util.bin2dec(param);
+		expect(returnValue).to.equal(5, 'returns the value passed as a parameter');
+	});
 });
