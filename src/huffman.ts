@@ -99,7 +99,6 @@ export class AlgoritmoCompressaoHuffman {
             let caracter: any = param.charAt(i);
             if (this._dicionario.has(caracter))
                 caracter = this._dicionario.get(caracter);
-            else caracter = Util.string2bin(caracter);
             textoComprimido += caracter;
             i++;
         }
