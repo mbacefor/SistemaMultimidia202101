@@ -46,23 +46,36 @@ export class AlgoritmoCompressaoHuffman {
         }
     }
 
-
-
     private montaArvoreBinaria(): void {
-        //Iterate over map values
-        for (let value of this._dicionarioGerado.values()) {
+        // Iterate over map values
+        for (const value of this._dicionarioGerado.values()) {
             this._listaNode.push(value);
         }
         this._listaNode.sort((a: Node, b: Node) => (a._peso <= b._peso) ? 1 : -1);
 
-        while (this._listaNode.length>1) {
+        while (this._listaNode.length > 1) {
             const node1 = this._listaNode.pop();
             const node2 = this._listaNode.pop();
-            const node3 = new Node(node1._peso+node2._peso,node1._caracter+node2._caracter);
-            node3._nodeEsquerdo=node1;
-            node3._nodeDireito=node2;
+            const node3 = new Node(node1._peso + node2._peso, node1._caracter + node2._caracter);
+            node3._nodeEsquerdo = node1;
+            node3._nodeDireito = node2;
             this._listaNode.push(node3);
             this._listaNode.sort((a: Node, b: Node) => (a._peso <= b._peso) ? 1 : -1);
+        }
+    }
+
+    private calculaBinario(): void {
+        // Iterate over map values
+        for (const value of this._listaNode.values()) {
+            value.calculaBinario('');
+        }
+    }
+
+    private montaDicionario(): void {
+        this._dicionario.clear();
+        for (const value of this._dicionarioGerado.values()) {
+            this._dicionario.set(value._caracter, value._represtaBinario);
+            this._dicionario.set(value._represtaBinario, value._caracter);
         }
     }
 
@@ -72,11 +85,13 @@ export class AlgoritmoCompressaoHuffman {
      * @param param
      * @returns
      */
-    public comprimeFequenciaCaractere(param: string): string {
+    public comprimeCaractere(param: string): string {
         this._logger.debug('Entrada: ' + param);
         this._logger.debug('Entrada(B): ' + Util.string2bin(param));
         this.calculaPeso(param);
         this.montaArvoreBinaria();
+        this.calculaBinario();
+        this.montaDicionario();
         let i = 0;
         let textoComprimido: string = '';
         // fazer loop em todos os caracteres da string de entrada
@@ -89,7 +104,7 @@ export class AlgoritmoCompressaoHuffman {
             i++;
         }
         this._logger.debug('Saida: ' + textoComprimido);
-        this._logger.debug('Saida (B): ' + Util.string2bin(textoComprimido));
+        this._logger.debug('%: ' + 100*(textoComprimido).length/Util.string2bin(param).length);
         return textoComprimido;
     }
 
@@ -104,15 +119,12 @@ export class AlgoritmoCompressaoHuffman {
         let i = 0;
         let textoDescomprimido: any = '';
         // fazer loop em todos os caracteres da string de entrada
+        let j = 0;
         while (i < param.length) {
-            const caracter = param.substring(i, i + 3);
+            const caracter = param.substring(i, ++j);
             if (this._dicionario.has(caracter)) {
                 textoDescomprimido += this._dicionario.get(caracter);
-                i += 3;
-            }
-            else {
-                textoDescomprimido += String.fromCharCode(Util.bin2dec(param.substring(i, i + 8)));
-                i += 8;
+                i = j;
             }
         }
         this._logger.debug('Return: ' + textoDescomprimido);
