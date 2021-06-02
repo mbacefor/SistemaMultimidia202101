@@ -97,8 +97,7 @@ export class AlgoritmoCompressaoHuffman {
         // fazer loop em todos os caracteres da string de entrada
         while (i < param.length) {
             let caracter: any = param.charAt(i);
-            if (this._dicionario.has(caracter))
-                caracter = this._dicionario.get(caracter);
+            caracter = this._dicionario.get(caracter);
             textoComprimido += caracter;
             i++;
         }
