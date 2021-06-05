@@ -41,6 +41,11 @@ describe('Util class', () => {
 		const returnValue: string = Util.string2bin(param);
 		expect(returnValue).to.equal('0100000101000010', 'returns the value passed as a parameter');
 	});
+	it('Testa o metodo string2bin com o texto A', () => {
+		const param: string = 'A';
+		const returnValue: string = Util.string2bin(param);
+		expect(returnValue).to.equal('01000001', 'returns the value passed as a parameter');
+	});
 
 	it('Testa o metodo bin2dec com o texto 11', () => {
 		const param: string = '11';
