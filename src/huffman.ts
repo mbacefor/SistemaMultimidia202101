@@ -35,8 +35,7 @@ export class AlgoritmoCompressaoHuffman {
     private calculaPeso(param: string): void {
         for (const value of param) {
             if (this._dicionarioGerado.has(value)) {
-                const nodeObtido = this._dicionarioGerado.get(value);
-                if (nodeObtido !== undefined)
+                const nodeObtido:any  = this._dicionarioGerado.get(value);
                     nodeObtido._peso++;
             }
             else {
