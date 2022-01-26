@@ -42,7 +42,7 @@
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.0.0",
     "@types/node": "^15.12.2",
-    "chai": "^4.1.2",
+    "chai": "^4.3.5",
     "conventional-changelog-cli": "^2.0.12",
     "coveralls": "^3.0.3",
     "cz-conventional-changelog": "^3.0.2",
